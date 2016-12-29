@@ -1,10 +1,8 @@
-#! /usr/bin/env python3
+#! /usr/bin/env python
 
 from lxml import html
 from time import sleep
-import requests
-import sys
-import os
+import requests, sys, os
 
 def status():
     tot=int(os.path.getsize(os.path.realpath("guids.txt")))/37
