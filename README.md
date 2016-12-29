@@ -13,7 +13,7 @@ though I didn't implement them here.
 * Yes, this is a waste of time
 * Yes, this probably a waste of resources
 * Because I can
-* Purpose is not requirement, it's an option
+* Purpose is not a requirement, it's an option
 * That's not a question
 * I don't care what you think about this
 * Yes, you may fork it
