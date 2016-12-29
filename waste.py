@@ -1,21 +1,25 @@
-#! /usr/bin/env python
+#! /usr/bin/env python3
 
 from lxml import html
 from time import sleep
 import requests
+import sys
+import os
 
-count = 0
+def status():
+    tot=int(os.path.getsize(os.path.realpath("guids.txt")))/37
+    print("Wasted {} guids.".format(tot))
 
-while (count < 10 ):
-    page = requests.get("http://wasteaguid.info/")
-    tree = html.fromstring(page.content)
+def main():
+    while True:
+        page = requests.get("http://wasteaguid.info/")
+        tree = html.fromstring(page.content)
+        guid = tree.xpath('//h1/text()')[1]
+        with open("guids.txt", "a") as gfile:
+            gfile.write(guid.rstrip("\n"))
+        sleep(1)
 
-    guid = tree.xpath('//h1/text()')[1]
-    with open("guids.txt", "a") as gfile:
-        gfile.write(guid.rstrip("\n"))
-    count += 1
-    sleep(1)
-
-print("Wasted {} guids.".format(count))
-
-
+if len(sys.argv) > 1:
+    status()
+else:
+    main()
